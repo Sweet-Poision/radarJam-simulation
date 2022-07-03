@@ -8,7 +8,7 @@
 #define _CLEAR_SCREEN_ system("clear")
 #endif
 
-const int WAIT_TIME = 5;
+const int WAIT_TIME = 10;
 #define _PUSLE_WIDTH_ usleep(WAIT_TIME);
 
 void input_radar_count(const int len);

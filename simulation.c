@@ -9,7 +9,7 @@
 #endif
 
 const int WAIT_TIME = 5;
-#define _PUSLE_WIDTH_ sleep(WAIT_TIME);
+#define _PUSLE_WIDTH_ usleep(WAIT_TIME);
 
 void input_radar_count(const int len);
 void copy_radar_data(const int * arr,const int len);

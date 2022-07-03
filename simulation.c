@@ -8,8 +8,8 @@
 #define _CLEAR_SCREEN_ system("clear")
 #endif
 
-const int WAIT_TIME = 10;
-#define _PUSLE_WIDTH_ usleep(WAIT_TIME);
+// const int WAIT_TIME = 500;
+#define _PUSLE_WIDTH_ usleep(925);
 
 void input_radar_count(const int len);
 void copy_radar_data(const int * arr,const int len);
@@ -83,14 +83,14 @@ void printOutput(const int len) {
     int i, j;
     char result;
     _CLEAR_SCREEN_;
-    printf("RADAR LOG\n\n%5s %5s %10s %10s\n", "S.No.", "ID", "RESULT", "REM");
+    printf("RADAR LOG\n\n%10s %10s %10s %10s\n", "S.No.", "ID", "RESULT", "REM");
     for( i = 0; i < len; ++i) {
         j = i * 3;
         if(OUTPUT_ARRAY[j + 2])
             result = 'S';
         else
             result = 'F';
-        printf("%5d %5d %10c %10d\n", i+1, OUTPUT_ARRAY[j], result, OUTPUT_ARRAY[j+1]);
+        printf("%10d %10d %10c %10d\n", i+1, OUTPUT_ARRAY[j], result, OUTPUT_ARRAY[j+1]);
     }
 }
 

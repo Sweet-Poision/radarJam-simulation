@@ -1,17 +1,16 @@
 #include <stdlib.h>
 
-int check_possibility_of_array(const int len1, const int len2, const int * arr, int ** arr2);
+int check_possibility_of_array(const int len1, const int len2, const int * arr, int * arr2);
 
 int *PERMUTATION;
 int *WEIGHTAGE_VALUE;
 
-void make_array(const int len1, const int len2, const int * weight_value, int ** arr2) {
+void make_array(const int len1, const int len2, const int * weight_value, int * arr2) {
     int i, j, k;
-    PERMUTATION = (int * )malloc(sizeof(int)*len2);
-    WEIGHTAGE_VALUE = (int * )malloc(sizeof(int)*len1);
-
-    for(i = 0; i < len2; ++i) 
+    PERMUTATION = (int * )malloc(sizeof(int)*len2);    
+    for(i = 0; i < len1; ++i) 
         WEIGHTAGE_VALUE[i] = weight_value[i];
+
 
     for(i = 0, j = 0; i < len2; ++j) {
         if(j==len1)
@@ -22,10 +21,13 @@ void make_array(const int len1, const int len2, const int * weight_value, int **
             i++;
         }
     }
-    (*arr2) = PERMUTATION;
+    
+    for( i = 0; i < len2; ++i) 
+        arr2[i] = PERMUTATION[i];
+
 }
 
-int check_possibility_of_array(const int len1, const int len2, const int * arr, int ** arr2) {
+int check_possibility_of_array(const int len1, const int len2, const int * arr, int * arr2) {
     int sum = 0, i;
     WEIGHTAGE_VALUE = (int * )malloc(sizeof(int) * len1);
     for(i = 0; i < len1; ++i) {
@@ -35,11 +37,13 @@ int check_possibility_of_array(const int len1, const int len2, const int * arr, 
 
     if(sum != len2) 
         return 0;
-    (*arr2) = WEIGHTAGE_VALUE;
+    // arr2 = (int * )malloc(sizeof(int) * len1);
+    for(i = 0; i < len1; ++i)
+        arr2[i] = WEIGHTAGE_VALUE[i];
     return 1;
 }
 
-int make_permutaion_intital_array(const int len1, const int len2, const int * arr, int ** arr2) {
+int make_permutaion_intital_array(const int len1, const int len2, const int * arr, int * arr2) {
     if(check_possibility_of_array(len1, len2, arr, arr2)) 
         return 1;
     else 

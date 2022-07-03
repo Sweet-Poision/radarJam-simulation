@@ -46,11 +46,14 @@ void fisher_yates(const int len) {
     }
 }
 
-void randomize(const int * arr, int ** arr2, const int len) {
+void randomize(int * arr, const int len) {
+    int i;
     srand (time(NULL));
     ARRAY = (int * )malloc(sizeof(int)*len);
     position_random(arr, len);
     fisher_yates(len); 
     shuffle(len);
-    (*arr2) = ARRAY;
+    // (arr2) = ARRAY;
+    for(i = 0; i < len; ++i) 
+        arr[i] = ARRAY[i];
 }

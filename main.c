@@ -41,7 +41,7 @@ void input_weightage_data() {
 void permutation_user_loop() {
     char answer;
     do {
-        randomize(PERMUTATION_ARRAY, &PERMUTATION_ARRAY, PERMUTATION_LENGTH);
+        randomize(PERMUTATION_ARRAY, PERMUTATION_LENGTH);
         start_simulation(PERMUTATION_ARRAY, PERMUTATION_LENGTH, SAMPLE_LENGTH);
         fflush(stdin);
         printf("Enter 'y' for next permutaion: ");
@@ -60,8 +60,11 @@ int main() {
     _CLEAR_SCREEN_;
     
     PERMUTATION_ARRAY = (int * )malloc(sizeof(int) * PERMUTATION_LENGTH);
-    if(make_permutaion_intital_array(SAMPLE_LENGTH, PERMUTATION_LENGTH, WEIGHTAGE, &WEIGHTAGE_VALUE_MAIN)) {
-        make_array(SAMPLE_LENGTH, PERMUTATION_LENGTH, WEIGHTAGE_VALUE_MAIN, &PERMUTATION_ARRAY);
+    WEIGHTAGE_VALUE_MAIN = (int * )malloc(sizeof(int) * SAMPLE_LENGTH);
+
+    if(make_permutaion_intital_array(SAMPLE_LENGTH, PERMUTATION_LENGTH, WEIGHTAGE, WEIGHTAGE_VALUE_MAIN)) {
+
+        make_array(SAMPLE_LENGTH, PERMUTATION_LENGTH, WEIGHTAGE_VALUE_MAIN, PERMUTATION_ARRAY);
         permutation_user_loop();
     }
     else {

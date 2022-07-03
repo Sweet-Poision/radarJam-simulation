@@ -7,7 +7,8 @@ int *WEIGHTAGE_VALUE;
 
 void make_array(const int len1, const int len2, const int * weight_value, int * arr2) {
     int i, j, k;
-    PERMUTATION = (int * )malloc(sizeof(int)*len2);    
+    PERMUTATION = (int * )malloc(sizeof(int)*len2);  
+    WEIGHTAGE_VALUE = (int * )malloc(sizeof(int) * len1);  
     for(i = 0; i < len1; ++i) 
         WEIGHTAGE_VALUE[i] = weight_value[i];
 
@@ -25,6 +26,8 @@ void make_array(const int len1, const int len2, const int * weight_value, int * 
     for( i = 0; i < len2; ++i) 
         arr2[i] = PERMUTATION[i];
 
+    free(PERMUTATION);
+    free(WEIGHTAGE_VALUE);
 }
 
 int check_possibility_of_array(const int len1, const int len2, const int * arr, int * arr2) {
@@ -37,9 +40,9 @@ int check_possibility_of_array(const int len1, const int len2, const int * arr, 
 
     if(sum != len2) 
         return 0;
-    // arr2 = (int * )malloc(sizeof(int) * len1);
     for(i = 0; i < len1; ++i)
         arr2[i] = WEIGHTAGE_VALUE[i];
+    free(WEIGHTAGE_VALUE);
     return 1;
 }
 

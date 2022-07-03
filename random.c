@@ -53,7 +53,7 @@ void randomize(int * arr, const int len) {
     position_random(arr, len);
     fisher_yates(len); 
     shuffle(len);
-    // (arr2) = ARRAY;
     for(i = 0; i < len; ++i) 
         arr[i] = ARRAY[i];
+    free(ARRAY);
 }
